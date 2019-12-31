@@ -11,7 +11,7 @@ missCounter(missCount);
 const gameOn = () => {
   const mole = event.target.classList.contains('hole_has-mole');
   if (mole) {
-     return successCounter(++count); 
+     successCounter(++count); 
   } else {
       missCounter(++missCount);
   }
@@ -26,7 +26,7 @@ const gameRes = () => {
       lost.textContent = missCount;
   }
   
-  if (count > 9 && missCount < 5) {
+  if (count > 5 && missCount < 5) {
       alert('Вы выиграли!');
       missCount = 0;
       count = 0;

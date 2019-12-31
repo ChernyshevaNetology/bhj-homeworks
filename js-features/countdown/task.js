@@ -7,9 +7,9 @@ const timer = document.querySelector('#timer');
 
 if (timer.textContent == 0) {
     clearInterval(interval)
+    // через alert не доходит на нуля - останавливается на 1 - поэтому нашла способ через request animation frame
     requestAnimationFrame( () => requestAnimationFrame(winner) ) 
 }
-
  }
 const interval = setInterval( countDown, 1000 )
 
