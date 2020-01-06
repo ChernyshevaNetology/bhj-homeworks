@@ -6,19 +6,24 @@ const menuSub = document.querySelector('.menu_sub');
 function displayMenu (e) {
 if (e.target.nextElementSibling) {
     e.preventDefault();
-    e.target.nextElementSibling.classList.add("menu_active");
+    e.target.nextElementSibling.classList.toggle("menu_active");
 }
   }
 
 function removeActive (e) {
   const menuActive = document.querySelector('.menu_active');  
     if (menuActive) {
-     menuActive.classList.remove('menu_active');
+	 menuActive.classList.remove('menu_active');
+    if (e.target.parentElement && e.target.parentElement.parentNode.classList.contains('menu_sub'))  {
+		return;
+	}
+	 e.stopPropagation();
+	 e.preventDefault();
    }   
 }
 
 menuLink.forEach(el => el.onclick = displayMenu);
-document.addEventListener('click', removeActive, true)
+document.addEventListener('click', removeActive, true);
 
 /*
 Советы
