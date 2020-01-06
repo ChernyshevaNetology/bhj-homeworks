@@ -11,7 +11,7 @@ const btnSuccess = document.querySelector('.btn_success');
 }) ()
 
 // скрываем модальное окно по нажатию на крестик
-const closeModal = (e) => {
+const closeModal = () => {
 
  if (modalMain) {
     modalMain.classList.remove('modal_active');
@@ -21,20 +21,21 @@ const closeModal = (e) => {
   }  
 }
 
-// показываем кнопку "сделать хорошо" по нажатию на кнопку
+// показываем кнопку "сделать хорошо" по нажатию на кнопку и скрываем первое модальное окно, чтобы не было наложения
 const showSuccessModal = () => {
-  modalSuccess.classList.add('modal_active');
+  modalMain.classList.remove('modal_active');
+  modalSuccess.classList.add('modal_active'); 
 }
 
-// меняем кнопки
+// закрываем окно по нажатию на  - хорошо сделано - 
 const closeSuccessModal = () => {
  modalSuccess.classList.remove('modal_active');  
 }
 
 close.forEach(el => el.onclick = closeModal);
+
 btnRed.onclick = showSuccessModal;
 btnSuccess.onclick = closeSuccessModal;
-
 
 }
 
