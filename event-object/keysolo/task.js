@@ -33,7 +33,7 @@ class Game {
       return;
     }
 
-    if (++this.winsElement.textContent === 10) {
+  if (++this.winsElement.textContent === 10) {
       alert('Победа!');
       this.reset();
     }
@@ -47,6 +47,14 @@ class Game {
     }
     this.setNewWord();
   }
+
+registerEvents() {
+  	document.addEventListener("keypress", (e) => {
+  		e.key.toLowerCase() === this.currentSymbol.textContent.toLowerCase() ? this.success() : this.fail();
+})
+  }
+
+
 
   setNewWord() {
     const word = this.getWord();
