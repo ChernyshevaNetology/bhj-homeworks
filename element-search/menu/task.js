@@ -1,7 +1,6 @@
 const menuItem = document.querySelectorAll('.menu__item');
 const menuLink = document.querySelectorAll('.menu__link');
-const menuSub = document.querySelector('.menu_sub');
-
+const menuSub = [...document.querySelectorAll('.menu_sub')];
 
 function displayMenu (e) {
 if (e.target.nextElementSibling) {
@@ -10,6 +9,20 @@ if (e.target.nextElementSibling) {
 }
   }
 
+function removeActive(e) {
+ if (e.target.closest('.menu__item')) {
+   return;	
+ }
+  menuSub.forEach(el => el.classList.remove('menu_active'));
+}
+
+
+menuLink.forEach(el => el.onclick = displayMenu);
+document.addEventListener('click', removeActive);
+
+
+
+/*
 function removeActive (e) {
   const menuActive = document.querySelector('.menu_active');  
     if (menuActive) {
@@ -21,9 +34,12 @@ function removeActive (e) {
 	 e.preventDefault();
    }   
 }
+*/
 
-menuLink.forEach(el => el.onclick = displayMenu);
-document.addEventListener('click', removeActive, true);
+
+
+
+// document.addEventListener('click', removeActive, true);
 
 /*
 Советы
