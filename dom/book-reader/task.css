@@ -26,6 +26,7 @@ body {
   color: white;
 }
 
+
 .book__controls {
   background: rgb(63, 63, 63);
   padding: 10px;
@@ -34,7 +35,8 @@ body {
   justify-content: space-around;
   align-items: center;
   color: whitesmoke;
-  font-size: 16px;;
+  font-size: 16px;
+  ;
 }
 
 .book__control {
@@ -102,6 +104,7 @@ body {
   border: 1px solid whitesmoke;
   border-radius: 50%;
 }
+
 .book {
   font-family: Georgia;
 }
@@ -112,6 +115,7 @@ body {
   box-sizing: border-box;
   padding: 20px;
 }
+
 .book p:first-letter {
   font-size: 28px;
 }
