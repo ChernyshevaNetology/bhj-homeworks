@@ -18,12 +18,12 @@ body {
   color: whitesmoke;
 }
 
-.book_bg-gray {
-  color: whitesmoke;
+.book_bg-black {
+  background: #222;
 }
 
-.book_bg-white {
-  color: white;
+.book_bg-gray {
+  background: gray;
 }
 
 
@@ -74,6 +74,13 @@ body {
   box-shadow: 0 0 5px white;
   border: 1px solid gray;
 }
+
+.bg_active {
+  box-shadow: 0 0 5px white;
+  border: 1px solid gray;
+}
+
+
 
 .font-size {
   text-align: center;
