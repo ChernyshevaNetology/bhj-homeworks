@@ -1,20 +1,16 @@
-window.onload = function() {
+class Clicker {
+  constructor(count, image) {
+    this.count = document.getElementById(count);
+    this.image = document
+      .getElementById(image)
+      .addEventListener("click", (e) => this.incrementCount(e));
+    this.initialCount = 0;
+  }
 
-let number = 0;
-const cookie = document.getElementById('cookie');
-const count = document.getElementById('clicker__counter');
-
-
-function clicker () {
- count.textContent = ++number;
+  incrementCount(e) {
+    this.count.textContent = ++this.initialCount;
+    e.target.classList.toggle("checksize");
+  }
 }
 
-function toggleSize () {
-  cookie.classList.toggle('checksize')
-}
-
-
-cookie.addEventListener('click', toggleSize);
-cookie.onclick = clicker;
-
-}
+const Cookie = new Clicker("clicker__counter", "cookie");

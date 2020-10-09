@@ -1,44 +1,46 @@
-let count = 0;
-let missCount = 0;
-const holes = document.querySelector('.hole-game');
-const deadCount = document.getElementById('dead');
-const lost = document.getElementById('lost');
-const successCounter = n => deadCount.textContent = n;
-const missCounter = n => lost.innerText = n;
-successCounter(count);
-missCounter(missCount);
-
-const gameOn = () => {
-  const mole = event.target.classList.contains('hole_has-mole');
-  if (mole) {
-     successCounter(++count); 
-  } else {
-      missCounter(++missCount);
+class GameOn {
+  constructor(game, hit, miss) {
+    this.holes = document
+      .querySelector(game)
+      .addEventListener("click", (e) => this.handleClick(e));
+    this.hit = document.getElementById(hit);
+    this.miss = document.getElementById(miss);
+    this.count = 0;
+    this.missCount = 0;
   }
-} 
 
-const gameRes = () => {
-  if (missCount > 4) {
-      alert('Вы проиграли');
-      missCount = 0;
-      count = 0;
-      deadCount.textContent = count;
-      lost.textContent = missCount;
+  handleClick({target}) {
+    if (target.classList.contains("hole_has-mole")) {
+      ++this.count;
+      this.handleCount();
+    } else {
+      ++this.missCount;
+      this.handleCount();
+    }
   }
-  
-  if (count > 5 && missCount < 5) {
-      alert('Вы выиграли!');
-      missCount = 0;
-      count = 0;
-      deadCount.textContent = count;
-      lost.textContent = missCount; 
-  } 
+
+  handleCount() {
+    this.hit.textContent = this.count;
+    this.miss.textContent = this.missCount;
+    this.handleWin()
+  }
+
+  handleWin = () => {
+    if (this.count > 4 && this.missCount < 5) {
+      alert("Вы победили!");
+      this.handleReset();
+    } else if (this.missCount > 4) {
+      alert("Вы проиграли");
+      this.handleReset();
+    }
+  };
+
+  handleReset() {
+    this.count = 0;
+    this.missCount = 0;
+    this.handleCount();
+  }
 }
 
-holes.addEventListener('click', gameOn)
-holes.addEventListener('click', gameRes)
-
-
-
-
+const Game = new GameOn(".hole-game", "dead", "lost");
 
